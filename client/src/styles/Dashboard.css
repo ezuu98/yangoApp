@@ -743,8 +743,8 @@
     padding: 8px 12px;
   }
 
-  .date-picker-popup {
-    min-width: 260px;
+  .calendar-popup {
+    min-width: 300px;
   }
 
   .vehicles-table {
