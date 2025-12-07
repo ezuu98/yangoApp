@@ -684,11 +684,11 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-[data-theme="light"] .add-booking-btn {
+.dashboard-container[data-theme="light"] .add-booking-btn {
   color: #1a1f2e;
 }
 
-[data-theme="light"] .add-booking-btn:hover {
+.dashboard-container[data-theme="light"] .add-booking-btn:hover {
   color: #1a1f2e;
 }
 
