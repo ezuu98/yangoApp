@@ -552,9 +552,20 @@
     font-size: 12px;
   }
 
-  .logout-button {
-    padding: 6px 12px;
-    font-size: 12px;
+  .dropdown-toggle {
+    width: 36px;
+    height: 36px;
+    padding: 6px 10px;
+    font-size: 16px;
+  }
+
+  .dropdown-menu {
+    min-width: 150px;
+  }
+
+  .dropdown-item {
+    padding: 10px 14px;
+    font-size: 13px;
   }
 
   .tab-navigation {
