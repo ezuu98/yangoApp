@@ -272,7 +272,7 @@
 
 .tab-content h2 {
   font-size: 28px;
-  color: #1a3a52;
+  color: var(--text-primary);
   margin: 0 0 24px 0;
   font-weight: 600;
 }
