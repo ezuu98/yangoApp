@@ -92,7 +92,7 @@ function Dashboard() {
             {/* Status Cards */}
             <div className="status-cards-grid">
               {statusCards.map((card, index) => (
-                <div key={index} className="status-card">
+                <div key={index} className={`status-card card-${card.label.toLowerCase()}`}>
                   <div className="status-icon">{card.icon}</div>
                   <div className="status-info">
                     <p className="status-label">{card.label}</p>
