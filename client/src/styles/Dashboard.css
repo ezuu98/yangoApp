@@ -374,19 +374,19 @@
 }
 
 .card-active .status-label {
-  color: #2e7d32;
+  color: var(--status-active);
 }
 
 .card-stationed .status-label {
-  color: #424242;
+  color: var(--status-stationed);
 }
 
 .card-maintenance .status-label {
-  color: #f57f17;
+  color: var(--status-maintenance);
 }
 
 .card-emergency .status-label {
-  color: #c62828;
+  color: var(--status-emergency);
 }
 
 .status-value {
@@ -396,19 +396,19 @@
 }
 
 .card-active .status-value {
-  color: #2e7d32;
+  color: var(--status-active);
 }
 
 .card-stationed .status-value {
-  color: #424242;
+  color: var(--status-stationed);
 }
 
 .card-maintenance .status-value {
-  color: #f57f17;
+  color: var(--status-maintenance);
 }
 
 .card-emergency .status-value {
-  color: #c62828;
+  color: var(--status-emergency);
 }
 
 /* Vehicles Section */
