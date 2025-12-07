@@ -86,90 +86,67 @@
   width: 100%;
 }
 
-/* Welcome Card */
-.welcome-card {
+/* Tab Navigation */
+.tab-navigation {
+  background: white;
+  border-bottom: 2px solid #e0e0e0;
+  position: sticky;
+  top: 70px;
+  z-index: 50;
+}
+
+.tab-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  width: 100%;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 16px 24px;
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  position: relative;
+}
+
+.tab-button:hover {
+  color: #1a3a52;
+  background-color: rgba(26, 58, 82, 0.03);
+}
+
+.tab-button.active {
+  color: #FF8C42;
+  border-bottom-color: #FF8C42;
+}
+
+/* Tab Content */
+.tab-content {
   background: white;
   border-radius: 12px;
   padding: 40px;
-  margin-bottom: 40px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.welcome-card h2 {
-  font-size: 32px;
+.tab-content h2 {
+  font-size: 28px;
   color: #1a3a52;
-  margin: 0 0 12px 0;
+  margin: 0 0 16px 0;
+  font-weight: 600;
 }
 
-.welcome-card p {
+.tab-content p {
   font-size: 16px;
   color: #666;
   margin: 0;
   line-height: 1.6;
-}
-
-/* Quick Actions */
-.quick-actions {
-  margin-bottom: 40px;
-}
-
-.quick-actions h3 {
-  font-size: 20px;
-  color: #1a3a52;
-  margin: 0 0 24px 0;
-  font-weight: 600;
-}
-
-.actions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-.action-card {
-  background: white;
-  border-radius: 12px;
-  padding: 32px 24px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.action-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-.action-icon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 140, 66, 0.1);
-  border-radius: 10px;
-  color: #FF8C42;
-}
-
-.action-icon svg {
-  width: 28px;
-  height: 28px;
-}
-
-.action-card h4 {
-  font-size: 18px;
-  color: #1a3a52;
-  margin: 0 0 8px 0;
-  font-weight: 600;
-}
-
-.action-card p {
-  font-size: 14px;
-  color: #888;
-  margin: 0;
-  line-height: 1.5;
 }
 
 /* Bookings Section */
