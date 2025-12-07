@@ -454,7 +454,13 @@
 
   .filter-container {
     flex-wrap: wrap;
+    gap: 16px;
     margin-bottom: 16px;
+  }
+
+  .date-range-group {
+    flex: 1;
+    min-width: 200px;
   }
 
   .vehicles-table {
