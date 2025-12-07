@@ -563,8 +563,12 @@
   .filter-container {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 12px;
     margin-bottom: 16px;
+  }
+
+  .date-range-group {
+    width: 100%;
   }
 
   .date-filter-input {
