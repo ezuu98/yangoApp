@@ -536,11 +536,14 @@ function Dashboard() {
                     {bookings.length > 0 ? (
                       bookings.map((booking) => (
                         <tr key={booking.id}>
-                          <td>{booking.vehicle}</td>
+                          <td>{booking.customer}</td>
+                          <td>{booking.contact}</td>
+                          <td>{booking.cnic}</td>
+                          <td>{booking.reference}</td>
                           <td>{booking.driver}</td>
-                          <td>{booking.bookingDate}</td>
-                          <td>{booking.returnDate}</td>
-                          <td className="currency">{booking.amount.toLocaleString()}</td>
+                          <td>{booking.vehicle}</td>
+                          <td className="currency">{booking.fare.toLocaleString()}</td>
+                          <td>{booking.date}</td>
                           <td><span className={`booking-status status-${booking.status.toLowerCase()}`}>{booking.status}</span></td>
                           <td>
                             {booking.status !== 'Cancelled' && booking.status !== 'Completed' && (
