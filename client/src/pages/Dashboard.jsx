@@ -33,6 +33,21 @@ function Dashboard() {
   }, [isDropdownOpen]);
 
   useEffect(() => {
+    function handleClickOutside(event) {
+      if (datePickerRef.current && !datePickerRef.current.contains(event.target)) {
+        setIsDatePickerOpen(false);
+      }
+    }
+
+    if (isDatePickerOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [isDatePickerOpen]);
+
+  useEffect(() => {
     const theme = isDarkMode ? 'dark' : 'light';
     localStorage.setItem('theme', theme);
     document.documentElement.setAttribute('data-theme', theme);
