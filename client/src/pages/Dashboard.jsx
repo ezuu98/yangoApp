@@ -427,41 +427,82 @@ function Dashboard() {
                   </div>
                   <div className="modal-body">
                     <div className="form-group">
+                      <label>Customer Name</label>
+                      <input
+                        type="text"
+                        placeholder="Enter customer name"
+                        value={newBooking.customer}
+                        onChange={(e) => setNewBooking({ ...newBooking, customer: e.target.value })}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Contact</label>
+                      <input
+                        type="tel"
+                        placeholder="Enter phone number"
+                        value={newBooking.contact}
+                        onChange={(e) => setNewBooking({ ...newBooking, contact: e.target.value })}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>CNIC</label>
+                      <input
+                        type="text"
+                        placeholder="Enter CNIC number"
+                        value={newBooking.cnic}
+                        onChange={(e) => setNewBooking({ ...newBooking, cnic: e.target.value })}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Reference</label>
+                      <input
+                        type="text"
+                        placeholder="Enter reference number"
+                        value={newBooking.reference}
+                        onChange={(e) => setNewBooking({ ...newBooking, reference: e.target.value })}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Driver</label>
+                      <select
+                        value={newBooking.driver}
+                        onChange={(e) => setNewBooking({ ...newBooking, driver: e.target.value })}
+                      >
+                        <option value="">Select a driver</option>
+                        <option value="Ahmed Hassan">Ahmed Hassan</option>
+                        <option value="Fatima Ali">Fatima Ali</option>
+                        <option value="Mohammed Karim">Mohammed Karim</option>
+                        <option value="Amina Ibrahim">Amina Ibrahim</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
                       <label>Vehicle</label>
                       <select
                         value={newBooking.vehicle}
                         onChange={(e) => setNewBooking({ ...newBooking, vehicle: e.target.value })}
                       >
                         <option value="">Select a vehicle</option>
-                        <option value="KW-001">KW-001 - Ahmed Hassan</option>
-                        <option value="KW-002">KW-002 - Fatima Ali</option>
-                        <option value="KW-003">KW-003 - Mohammed Karim</option>
-                        <option value="KW-004">KW-004 - Amina Ibrahim</option>
+                        <option value="KW-001">KW-001</option>
+                        <option value="KW-002">KW-002</option>
+                        <option value="KW-003">KW-003</option>
+                        <option value="KW-004">KW-004</option>
                       </select>
                     </div>
                     <div className="form-group">
-                      <label>Booking Date</label>
-                      <input
-                        type="date"
-                        value={newBooking.bookingDate}
-                        onChange={(e) => setNewBooking({ ...newBooking, bookingDate: e.target.value })}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label>Return Date</label>
-                      <input
-                        type="date"
-                        value={newBooking.returnDate}
-                        onChange={(e) => setNewBooking({ ...newBooking, returnDate: e.target.value })}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label>Amount</label>
+                      <label>Fare</label>
                       <input
                         type="number"
-                        placeholder="Enter booking amount"
-                        value={newBooking.amount}
-                        onChange={(e) => setNewBooking({ ...newBooking, amount: e.target.value })}
+                        placeholder="Enter booking fare"
+                        value={newBooking.fare}
+                        onChange={(e) => setNewBooking({ ...newBooking, fare: e.target.value })}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Date</label>
+                      <input
+                        type="date"
+                        value={newBooking.date}
+                        onChange={(e) => setNewBooking({ ...newBooking, date: e.target.value })}
                       />
                     </div>
                   </div>
