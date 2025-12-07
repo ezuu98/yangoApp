@@ -277,6 +277,36 @@
   font-weight: 600;
 }
 
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.status-active {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: #2e7d32;
+}
+
+.status-stationed {
+  background-color: rgba(33, 150, 243, 0.15);
+  color: #1565c0;
+}
+
+.status-maintenance {
+  background-color: rgba(255, 152, 0, 0.15);
+  color: #e65100;
+}
+
+.status-emergency {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #c62828;
+}
+
 /* Bookings Empty State */
 .bookings-empty {
   text-align: center;
