@@ -373,7 +373,7 @@ function Dashboard() {
                 <table className="vehicles-table">
                   <thead>
                     <tr>
-                      <th>Plate No</th>
+                      <th>Vehicle</th>
                       <th>Driver</th>
                       <th>Contact</th>
                       <th>Earning</th>
