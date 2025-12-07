@@ -68,6 +68,70 @@ function Dashboard() {
     setIsDarkMode(!isDarkMode);
   };
 
+  const handleDateSelect = (date) => {
+    const dateStr = date.toISOString().split('T')[0];
+    if (tempStartDate === null) {
+      setTempStartDate(dateStr);
+    } else {
+      const start = new Date(tempStartDate);
+      const end = new Date(dateStr);
+      if (end >= start) {
+        setStartDate(tempStartDate);
+        setEndDate(dateStr);
+        setTempStartDate(null);
+        setIsDatePickerOpen(false);
+      } else {
+        setStartDate(dateStr);
+        setEndDate(tempStartDate);
+        setTempStartDate(null);
+        setIsDatePickerOpen(false);
+      }
+    }
+  };
+
+  const getDaysInMonth = (date) => {
+    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  };
+
+  const getFirstDayOfMonth = (date) => {
+    return new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+  };
+
+  const formatMonth = (date) => {
+    return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  };
+
+  const generateCalendarDays = () => {
+    const daysInMonth = getDaysInMonth(currentMonth);
+    const firstDay = getFirstDayOfMonth(currentMonth);
+    const days = [];
+
+    for (let i = 0; i < firstDay; i++) {
+      days.push(null);
+    }
+
+    for (let i = 1; i <= daysInMonth; i++) {
+      days.push(new Date(currentMonth.getFullYear(), currentMonth.getMonth(), i));
+    }
+
+    return days;
+  };
+
+  const isDateInRange = (date) => {
+    if (!date) return false;
+    const dateStr = date.toISOString().split('T')[0];
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const current = new Date(dateStr);
+    return current >= start && current <= end;
+  };
+
+  const isDateSelected = (date) => {
+    if (!date) return false;
+    const dateStr = date.toISOString().split('T')[0];
+    return dateStr === startDate || dateStr === endDate || dateStr === tempStartDate;
+  };
+
   const user = JSON.parse(localStorage.getItem('user')) || {};
 
   const vehiclesData = [
