@@ -685,34 +685,11 @@
     font-size: 12px;
   }
 
-  .theme-toggle-container {
-    gap: 6px;
-  }
-
-  .theme-switch {
-    width: 45px;
-    height: 24px;
-  }
-
-  .theme-slider::before {
-    width: 20px;
-    height: 20px;
-  }
-
-  .theme-switch input:checked + .theme-slider::before {
-    left: 23px;
-  }
-
-  .theme-label {
-    font-size: 14px;
-    min-width: 18px;
-  }
-
   .dropdown-toggle {
     width: 36px;
     height: 36px;
     padding: 6px 10px;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .dropdown-menu {
