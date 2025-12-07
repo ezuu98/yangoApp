@@ -1,17 +1,139 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Dashboard.css';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('main');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved ? saved === 'dark' : true;
+  });
+  const dropdownRef = useRef(null);
+  const datePickerRef = useRef(null);
   const today = new Date().toISOString().split('T')[0];
   const [startDate, setStartDate] = useState(today);
   const [endDate, setEndDate] = useState(today);
+  const [tempStartDate, setTempStartDate] = useState(null);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
   const navigate = useNavigate();
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    }
+
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [isDropdownOpen]);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (datePickerRef.current && !datePickerRef.current.contains(event.target)) {
+        setIsDatePickerOpen(false);
+      }
+    }
+
+    if (isDatePickerOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [isDatePickerOpen]);
+
+  useEffect(() => {
+    const theme = isDarkMode ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [isDarkMode]);
 
   const handleLogout = () => {
     localStorage.removeItem('user');
     navigate('/');
+  };
+
+  const handleSettings = () => {
+    setIsDropdownOpen(false);
+  };
+
+  const handleThemeToggle = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  const formatDateToString = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  const handleDateSelect = (date) => {
+    const dateStr = formatDateToString(date);
+    if (tempStartDate === null) {
+      setTempStartDate(dateStr);
+    } else {
+      const start = new Date(tempStartDate);
+      const end = new Date(dateStr);
+      if (end >= start) {
+        setStartDate(tempStartDate);
+        setEndDate(dateStr);
+        setTempStartDate(null);
+        setIsDatePickerOpen(false);
+      } else {
+        setStartDate(dateStr);
+        setEndDate(tempStartDate);
+        setTempStartDate(null);
+        setIsDatePickerOpen(false);
+      }
+    }
+  };
+
+  const getDaysInMonth = (date) => {
+    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  };
+
+  const getFirstDayOfMonth = (date) => {
+    return new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+  };
+
+  const formatMonth = (date) => {
+    return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  };
+
+  const generateCalendarDays = () => {
+    const daysInMonth = getDaysInMonth(currentMonth);
+    const firstDay = getFirstDayOfMonth(currentMonth);
+    const days = [];
+
+    for (let i = 0; i < firstDay; i++) {
+      days.push(null);
+    }
+
+    for (let i = 1; i <= daysInMonth; i++) {
+      days.push(new Date(currentMonth.getFullYear(), currentMonth.getMonth(), i));
+    }
+
+    return days;
+  };
+
+  const isDateInRange = (date) => {
+    if (!date) return false;
+    const dateStr = formatDateToString(date);
+    return dateStr >= startDate && dateStr <= endDate;
+  };
+
+  const isDateSelected = (date) => {
+    if (!date) return false;
+    const dateStr = formatDateToString(date);
+    return dateStr === startDate || dateStr === endDate || dateStr === tempStartDate;
   };
 
   const user = JSON.parse(localStorage.getItem('user')) || {};
@@ -105,25 +227,57 @@ function Dashboard() {
             {/* Date Filter and Table */}
             <div className="vehicles-section">
               <div className="filter-container">
-                <div className="date-range-group">
-                  <label htmlFor="startDate" className="filter-label">From:</label>
-                  <input
-                    id="startDate"
-                    type="date"
-                    className="date-filter-input"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                  />
-                </div>
-                <div className="date-range-group">
-                  <label htmlFor="endDate" className="filter-label">To:</label>
-                  <input
-                    id="endDate"
-                    type="date"
-                    className="date-filter-input"
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                  />
+                <div className="date-picker-dropdown" ref={datePickerRef}>
+                  <button
+                    onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
+                    className="date-picker-trigger"
+                  >
+                    📅 {startDate} to {endDate}
+                  </button>
+                  {isDatePickerOpen && (
+                    <div className="calendar-popup">
+                      <div className="calendar-header">
+                        <button
+                          className="calendar-nav"
+                          onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}
+                        >
+                          ← Prev
+                        </button>
+                        <span className="calendar-month">{formatMonth(currentMonth)}</span>
+                        <button
+                          className="calendar-nav"
+                          onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}
+                        >
+                          Next →
+                        </button>
+                      </div>
+                      <div className="calendar-weekdays">
+                        <div className="weekday">Sun</div>
+                        <div className="weekday">Mon</div>
+                        <div className="weekday">Tue</div>
+                        <div className="weekday">Wed</div>
+                        <div className="weekday">Thu</div>
+                        <div className="weekday">Fri</div>
+                        <div className="weekday">Sat</div>
+                      </div>
+                      <div className="calendar-days">
+                        {generateCalendarDays().map((date, index) => (
+                          <button
+                            key={index}
+                            className={`calendar-day ${date ? '' : 'empty'} ${date && isDateSelected(date) ? 'selected' : ''} ${date && isDateInRange(date) ? 'in-range' : ''}`}
+                            onClick={() => date && handleDateSelect(date)}
+                            disabled={!date}
+                          >
+                            {date ? date.getDate() : ''}
+                          </button>
+                        ))}
+                      </div>
+                      <div className="calendar-info">
+                        {tempStartDate && <p>Start: {tempStartDate} - Select end date</p>}
+                        {!tempStartDate && startDate && endDate && <p>Selected: {startDate} to {endDate}</p>}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -205,7 +359,41 @@ function Dashboard() {
           </div>
           <div className="header-user">
             <span className="user-greeting">Welcome, {user.email || 'Guest'}</span>
-            <button onClick={handleLogout} className="logout-button">Sign Out</button>
+            <div className="dropdown-container" ref={dropdownRef}>
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="dropdown-toggle"
+                aria-label="User menu"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              {isDropdownOpen && (
+                <div className="dropdown-menu">
+                  <div className="dropdown-theme-section">
+                    <span className="theme-section-label">Theme</span>
+                    <label className="theme-switch">
+                      <input
+                        type="checkbox"
+                        checked={isDarkMode}
+                        onChange={handleThemeToggle}
+                        aria-label="Toggle dark mode"
+                      />
+                      <span className="theme-slider"></span>
+                    </label>
+                    <span className="theme-label">{isDarkMode ? '🌙 Dark' : '☀️ Light'}</span>
+                  </div>
+                  <div className="dropdown-divider"></div>
+                  <button className="dropdown-item" onClick={handleSettings}>
+                    ⚙️ Settings
+                  </button>
+                  <button className="dropdown-item" onClick={handleLogout}>
+                    🚪 Sign Out
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </header>
