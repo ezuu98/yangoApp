@@ -10,6 +10,68 @@ function Dashboard() {
     const saved = localStorage.getItem('theme');
     return saved ? saved === 'dark' : true;
   });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [bookings, setBookings] = useState([
+    {
+      id: 1,
+      customer: 'Ali Ahmed',
+      contact: '0712345678',
+      cnic: '12345-1234567-1',
+      reference: 'REF-001',
+      driver: 'Ahmed Hassan',
+      vehicle: 'KW-001',
+      fare: 2500,
+      date: '2024-01-10',
+      status: 'Completed'
+    },
+    {
+      id: 2,
+      customer: 'Fatima Khan',
+      contact: '0787654321',
+      cnic: '12346-1234568-2',
+      reference: 'REF-002',
+      driver: 'Fatima Ali',
+      vehicle: 'KW-002',
+      fare: 3000,
+      date: '2024-01-12',
+      status: 'Completed'
+    },
+    {
+      id: 3,
+      customer: 'Mohammed Ali',
+      contact: '0722222222',
+      cnic: '12347-1234569-3',
+      reference: 'REF-003',
+      driver: 'Mohammed Karim',
+      vehicle: 'KW-003',
+      fare: 2800,
+      date: '2024-01-14',
+      status: 'Confirmed'
+    },
+    {
+      id: 4,
+      customer: 'Amina Hassan',
+      contact: '0733333333',
+      cnic: '12348-1234570-4',
+      reference: 'REF-004',
+      driver: 'Amina Ibrahim',
+      vehicle: 'KW-004',
+      fare: 2300,
+      date: '2024-01-16',
+      status: 'Pending'
+    }
+  ]);
+  const [newBooking, setNewBooking] = useState({
+    customer: '',
+    contact: '',
+    cnic: '',
+    reference: '',
+    driver: '',
+    vehicle: '',
+    fare: '',
+    date: ''
+  });
+  const dashboardRef = useRef(null);
   const dropdownRef = useRef(null);
   const datePickerRef = useRef(null);
   const today = new Date().toISOString().split('T')[0];
@@ -52,7 +114,9 @@ function Dashboard() {
   useEffect(() => {
     const theme = isDarkMode ? 'dark' : 'light';
     localStorage.setItem('theme', theme);
-    document.documentElement.setAttribute('data-theme', theme);
+    if (dashboardRef.current) {
+      dashboardRef.current.setAttribute('data-theme', theme);
+    }
   }, [isDarkMode]);
 
   const handleLogout = () => {
@@ -66,6 +130,32 @@ function Dashboard() {
 
   const handleThemeToggle = () => {
     setIsDarkMode(!isDarkMode);
+  };
+
+  const handleAddBooking = () => {
+    if (newBooking.customer && newBooking.contact && newBooking.cnic && newBooking.reference && newBooking.driver && newBooking.vehicle && newBooking.fare && newBooking.date) {
+      const booking = {
+        id: bookings.length + 1,
+        customer: newBooking.customer,
+        contact: newBooking.contact,
+        cnic: newBooking.cnic,
+        reference: newBooking.reference,
+        driver: newBooking.driver,
+        vehicle: newBooking.vehicle,
+        fare: parseFloat(newBooking.fare),
+        date: newBooking.date,
+        status: 'Pending'
+      };
+      setBookings([booking, ...bookings]);
+      setNewBooking({ customer: '', contact: '', cnic: '', reference: '', driver: '', vehicle: '', fare: '', date: '' });
+      setIsBookingModalOpen(false);
+    }
+  };
+
+  const handleCancelBooking = (bookingId) => {
+    setBookings(bookings.map(booking =>
+      booking.id === bookingId ? { ...booking, status: 'Cancelled' } : booking
+    ));
   };
 
   const formatDateToString = (date) => {
@@ -286,7 +376,7 @@ function Dashboard() {
                 <table className="vehicles-table">
                   <thead>
                     <tr>
-                      <th>Plate No</th>
+                      <th>Vehicle</th>
                       <th>Driver</th>
                       <th>Contact</th>
                       <th>Earning</th>
@@ -324,10 +414,160 @@ function Dashboard() {
       case 'bookings':
         return (
           <div className="tab-content">
-            <h2>Bookings</h2>
-            <div className="bookings-empty">
-              <p>You don't have any active bookings at the moment.</p>
-              <p>Start exploring our fleet and make your first reservation!</p>
+            <div className="bookings-header">
+              <h2>Bookings</h2>
+              <button className="add-booking-btn" onClick={() => setIsBookingModalOpen(true)}>
+                ➕ Add Booking
+              </button>
+            </div>
+
+            {isBookingModalOpen && (
+              <div className="modal-overlay" onClick={() => setIsBookingModalOpen(false)}>
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                  <div className="modal-header">
+                    <h3>Add New Booking</h3>
+                    <button className="modal-close" onClick={() => setIsBookingModalOpen(false)}>✕</button>
+                  </div>
+                  <div className="modal-body">
+                    <div className="form-group">
+                      <label>Customer Name</label>
+                      <input
+                        type="text"
+                        placeholder="Enter customer name"
+                        value={newBooking.customer}
+                        onChange={(e) => setNewBooking({ ...newBooking, customer: e.target.value })}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Contact</label>
+                      <input
+                        type="tel"
+                        placeholder="Enter phone number"
+                        value={newBooking.contact}
+                        onChange={(e) => setNewBooking({ ...newBooking, contact: e.target.value })}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>CNIC</label>
+                      <input
+                        type="text"
+                        placeholder="Enter CNIC number"
+                        value={newBooking.cnic}
+                        onChange={(e) => setNewBooking({ ...newBooking, cnic: e.target.value })}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Reference</label>
+                      <input
+                        type="text"
+                        placeholder="Enter reference number"
+                        value={newBooking.reference}
+                        onChange={(e) => setNewBooking({ ...newBooking, reference: e.target.value })}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Driver</label>
+                      <select
+                        value={newBooking.driver}
+                        onChange={(e) => setNewBooking({ ...newBooking, driver: e.target.value })}
+                      >
+                        <option value="">Select a driver</option>
+                        <option value="Ahmed Hassan">Ahmed Hassan</option>
+                        <option value="Fatima Ali">Fatima Ali</option>
+                        <option value="Mohammed Karim">Mohammed Karim</option>
+                        <option value="Amina Ibrahim">Amina Ibrahim</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label>Vehicle</label>
+                      <select
+                        value={newBooking.vehicle}
+                        onChange={(e) => setNewBooking({ ...newBooking, vehicle: e.target.value })}
+                      >
+                        <option value="">Select a vehicle</option>
+                        <option value="KW-001">KW-001</option>
+                        <option value="KW-002">KW-002</option>
+                        <option value="KW-003">KW-003</option>
+                        <option value="KW-004">KW-004</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label>Fare</label>
+                      <input
+                        type="number"
+                        placeholder="Enter booking fare"
+                        value={newBooking.fare}
+                        onChange={(e) => setNewBooking({ ...newBooking, fare: e.target.value })}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Date</label>
+                      <input
+                        type="date"
+                        value={newBooking.date}
+                        onChange={(e) => setNewBooking({ ...newBooking, date: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                  <div className="modal-footer">
+                    <button className="btn-cancel" onClick={() => setIsBookingModalOpen(false)}>Cancel</button>
+                    <button className="btn-submit" onClick={handleAddBooking}>Add Booking</button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div className="bookings-section">
+              <h3>Booking History</h3>
+              <div className="table-wrapper">
+                <table className="bookings-table">
+                  <thead>
+                    <tr>
+                      <th>Vehicle</th>
+                      <th>Customer</th>
+                      <th>Contact</th>
+                      <th>CNIC</th>
+                      <th>Reference</th>
+                      <th>Driver</th>
+                      <th>Fare</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {bookings.length > 0 ? (
+                      bookings.map((booking) => (
+                        <tr key={booking.id}>
+                          <td>{booking.vehicle}</td>
+                          <td>{booking.customer}</td>
+                          <td>{booking.contact}</td>
+                          <td>{booking.cnic}</td>
+                          <td>{booking.reference}</td>
+                          <td>{booking.driver}</td>
+                          <td className="currency">{booking.fare.toLocaleString()}</td>
+                          <td>{booking.date}</td>
+                          <td><span className={`booking-status status-${booking.status.toLowerCase()}`}>{booking.status}</span></td>
+                          <td>
+                            {booking.status !== 'Cancelled' && booking.status !== 'Completed' && (
+                              <button
+                                className="action-btn-cancel"
+                                onClick={() => handleCancelBooking(booking.id)}
+                              >
+                                Cancel
+                              </button>
+                            )}
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="10" className="no-data">No bookings found</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         );
@@ -344,7 +584,7 @@ function Dashboard() {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container" ref={dashboardRef}>
       {/* Header */}
       <header className="dashboard-header">
         <div className="header-content">
