@@ -157,25 +157,43 @@ function Dashboard() {
             {/* Date Filter and Table */}
             <div className="vehicles-section">
               <div className="filter-container">
-                <div className="date-range-group">
-                  <label htmlFor="startDate" className="filter-label">From:</label>
-                  <input
-                    id="startDate"
-                    type="date"
-                    className="date-filter-input"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                  />
-                </div>
-                <div className="date-range-group">
-                  <label htmlFor="endDate" className="filter-label">To:</label>
-                  <input
-                    id="endDate"
-                    type="date"
-                    className="date-filter-input"
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                  />
+                <div className="date-picker-dropdown" ref={datePickerRef}>
+                  <button
+                    onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
+                    className="date-picker-trigger"
+                  >
+                    📅 {startDate} to {endDate}
+                  </button>
+                  {isDatePickerOpen && (
+                    <div className="date-picker-popup">
+                      <div className="date-picker-field">
+                        <label htmlFor="startDate" className="date-picker-label">From:</label>
+                        <input
+                          id="startDate"
+                          type="date"
+                          className="date-picker-input"
+                          value={startDate}
+                          onChange={(e) => setStartDate(e.target.value)}
+                        />
+                      </div>
+                      <div className="date-picker-field">
+                        <label htmlFor="endDate" className="date-picker-label">To:</label>
+                        <input
+                          id="endDate"
+                          type="date"
+                          className="date-picker-input"
+                          value={endDate}
+                          onChange={(e) => setEndDate(e.target.value)}
+                        />
+                      </div>
+                      <button
+                        className="date-picker-apply"
+                        onClick={() => setIsDatePickerOpen(false)}
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
 
