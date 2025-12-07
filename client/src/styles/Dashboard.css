@@ -216,9 +216,24 @@
 
 .status-label {
   font-size: 14px;
-  color: #888;
   margin: 0 0 4px 0;
   font-weight: 500;
+}
+
+.card-active .status-label {
+  color: #2e7d32;
+}
+
+.card-stationed .status-label {
+  color: #424242;
+}
+
+.card-maintenance .status-label {
+  color: #f57f17;
+}
+
+.card-emergency .status-label {
+  color: #c62828;
 }
 
 .status-value {
