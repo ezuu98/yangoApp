@@ -45,6 +45,10 @@ function Dashboard() {
     setIsDropdownOpen(false);
   };
 
+  const handleThemeToggle = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   const user = JSON.parse(localStorage.getItem('user')) || {};
 
   const vehiclesData = [
