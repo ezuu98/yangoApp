@@ -1,0 +1,611 @@
+.dashboard-container {
+  min-height: 100vh;
+  background-color: #1a1f2e;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.dashboard-header {
+  background: linear-gradient(135deg, #1a3a52 0%, #0f2340 100%);
+  color: white;
+  padding: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: white;
+}
+
+.header-car-icon {
+  width: 44px;
+  height: 44px;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-greeting {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.logout-button {
+  background-color: rgba(255, 140, 66, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 140, 66, 0.5);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 140, 66, 0.3);
+  border-color: #FF8C42;
+}
+
+/* Main Content */
+.dashboard-main {
+  flex: 1;
+  padding: 40px 24px;
+}
+
+.dashboard-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+  background: #252d3d;
+  border-bottom: 2px solid #3a4558;
+  position: sticky;
+  top: 70px;
+  z-index: 50;
+}
+
+.tab-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  width: 100%;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 16px 24px;
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #8899aa;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  position: relative;
+}
+
+.tab-button:hover {
+  color: #aabbcc;
+  background-color: rgba(255, 140, 66, 0.05);
+}
+
+.tab-button.active {
+  color: #FF8C42;
+  border-bottom-color: #FF8C42;
+}
+
+/* Tab Content */
+.tab-content {
+  background: transparent;
+  padding: 0;
+}
+
+.tab-content h2 {
+  font-size: 28px;
+  color: #1a3a52;
+  margin: 0 0 24px 0;
+  font-weight: 600;
+}
+
+/* Status Cards Grid */
+.status-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.status-card {
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.status-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.card-active {
+  background: linear-gradient(135deg, #1f3f2a 0%, #192b1f 100%);
+  border-left: 4px solid #4CAF50;
+}
+
+.card-stationed {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+  border-left: 4px solid #9E9E9E;
+}
+
+.card-maintenance {
+  background: linear-gradient(135deg, #3f3220 0%, #2a2318 100%);
+  border-left: 4px solid #FFC107;
+}
+
+.card-emergency {
+  background: linear-gradient(135deg, #3f1f1f 0%, #2a1515 100%);
+  border-left: 4px solid #F44336;
+}
+
+.status-icon {
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.card-active .status-icon {
+  background: rgba(76, 175, 80, 0.2);
+}
+
+.card-stationed .status-icon {
+  background: rgba(158, 158, 158, 0.2);
+}
+
+.card-maintenance .status-icon {
+  background: rgba(255, 193, 7, 0.2);
+}
+
+.card-emergency .status-icon {
+  background: rgba(244, 67, 54, 0.2);
+}
+
+.status-info {
+  flex: 1;
+}
+
+.status-label {
+  font-size: 14px;
+  margin: 0 0 4px 0;
+  font-weight: 500;
+}
+
+.card-active .status-label {
+  color: #2e7d32;
+}
+
+.card-stationed .status-label {
+  color: #424242;
+}
+
+.card-maintenance .status-label {
+  color: #f57f17;
+}
+
+.card-emergency .status-label {
+  color: #c62828;
+}
+
+.status-value {
+  font-size: 28px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.card-active .status-value {
+  color: #2e7d32;
+}
+
+.card-stationed .status-value {
+  color: #424242;
+}
+
+.card-maintenance .status-value {
+  color: #f57f17;
+}
+
+.card-emergency .status-value {
+  color: #c62828;
+}
+
+/* Vehicles Section */
+.vehicles-section {
+  background: #252d3d;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Filter Container */
+.filter-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.date-range-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #aabbcc;
+  white-space: nowrap;
+}
+
+.date-filter-input {
+  padding: 8px 12px;
+  border: 2px solid #3a4558;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #1a1f2e;
+  color: #aabbcc;
+  transition: all 0.3s ease;
+}
+
+.date-filter-input:focus {
+  outline: none;
+  border-color: #FF8C42;
+  box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.15);
+}
+
+.date-filter-input::placeholder {
+  color: #667788;
+}
+
+/* Table Wrapper */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+.vehicles-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.vehicles-table thead {
+  background-color: #1a1f2e;
+  border-bottom: 2px solid #3a4558;
+}
+
+.vehicles-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #aabbcc;
+  white-space: nowrap;
+}
+
+.vehicles-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #3a4558;
+  color: #d4d4d4;
+}
+
+.vehicles-table tbody tr:hover {
+  background-color: rgba(255, 140, 66, 0.08);
+}
+
+.vehicles-table .currency {
+  font-weight: 500;
+  color: #aabbcc;
+}
+
+.vehicles-table .currency.profit {
+  color: #FF8C42;
+  font-weight: 600;
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.status-active {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: #2e7d32;
+}
+
+.status-stationed {
+  background-color: rgba(33, 150, 243, 0.15);
+  color: #1565c0;
+}
+
+.status-maintenance {
+  background-color: rgba(255, 152, 0, 0.15);
+  color: #e65100;
+}
+
+.status-emergency {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #c62828;
+}
+
+/* Bookings Empty State */
+.bookings-empty {
+  text-align: center;
+  padding: 48px 24px;
+  background: linear-gradient(135deg, rgba(255, 140, 66, 0.08) 0%, rgba(255, 140, 66, 0.04) 100%);
+  border-radius: 8px;
+  margin-top: 24px;
+}
+
+.bookings-empty p {
+  font-size: 16px;
+  color: #aabbcc;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.bookings-empty p:first-of-type {
+  margin-bottom: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px 16px;
+  }
+
+  .header-user {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .user-greeting {
+    font-size: 12px;
+  }
+
+  .tab-button {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+
+  .dashboard-main {
+    padding: 24px 16px;
+  }
+
+  .tab-content h2 {
+    font-size: 22px;
+  }
+
+  .status-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .status-card {
+    padding: 16px;
+  }
+
+  .status-icon {
+    font-size: 28px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .status-value {
+    font-size: 24px;
+  }
+
+  .vehicles-section {
+    padding: 16px;
+  }
+
+  .filter-container {
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .date-range-group {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .vehicles-table {
+    font-size: 13px;
+  }
+
+  .vehicles-table th,
+  .vehicles-table td {
+    padding: 10px 12px;
+  }
+
+  .bookings-empty {
+    padding: 32px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    padding: 12px;
+  }
+
+  .header-logo {
+    gap: 12px;
+  }
+
+  .header-car-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header-title {
+    font-size: 20px;
+  }
+
+  .header-user {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .user-greeting {
+    font-size: 12px;
+  }
+
+  .logout-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .tab-navigation {
+    top: 60px;
+  }
+
+  .tab-container {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    padding: 12px 16px;
+    font-size: 13px;
+    border-bottom: none;
+    border-left: 3px solid transparent;
+  }
+
+  .tab-button.active {
+    border-bottom: none;
+    border-left-color: #FF8C42;
+  }
+
+  .dashboard-main {
+    padding: 16px 12px;
+  }
+
+  .tab-content h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .status-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .status-card {
+    padding: 14px;
+  }
+
+  .status-icon {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .status-label {
+    font-size: 12px;
+  }
+
+  .status-value {
+    font-size: 20px;
+  }
+
+  .vehicles-section {
+    padding: 12px;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .date-range-group {
+    width: 100%;
+  }
+
+  .date-filter-input {
+    width: 100%;
+  }
+
+  .vehicles-table {
+    font-size: 12px;
+  }
+
+  .vehicles-table th,
+  .vehicles-table td {
+    padding: 8px 10px;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .bookings-empty {
+    padding: 24px 12px;
+  }
+
+  .bookings-empty p {
+    font-size: 14px;
+  }
+}
