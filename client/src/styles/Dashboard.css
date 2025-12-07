@@ -822,12 +822,15 @@
     margin-bottom: 16px;
   }
 
-  .date-range-group {
+  .date-picker-trigger {
     width: 100%;
+    text-align: center;
   }
 
-  .date-filter-input {
-    width: 100%;
+  .date-picker-popup {
+    min-width: 240px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .vehicles-table {
