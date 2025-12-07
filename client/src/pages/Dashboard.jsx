@@ -4,6 +4,7 @@ import '../styles/Dashboard.css';
 
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('main');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const today = new Date().toISOString().split('T')[0];
   const [startDate, setStartDate] = useState(today);
   const [endDate, setEndDate] = useState(today);
