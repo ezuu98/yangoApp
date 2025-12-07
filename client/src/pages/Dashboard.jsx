@@ -15,6 +15,10 @@ function Dashboard() {
     navigate('/');
   };
 
+  const handleSettings = () => {
+    setIsDropdownOpen(false);
+  };
+
   const user = JSON.parse(localStorage.getItem('user')) || {};
 
   const vehiclesData = [
