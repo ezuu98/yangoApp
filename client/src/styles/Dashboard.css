@@ -437,29 +437,29 @@
 .filter-label {
   font-size: 14px;
   font-weight: 500;
-  color: #aabbcc;
+  color: var(--text-secondary);
   white-space: nowrap;
 }
 
 .date-filter-input {
   padding: 8px 12px;
-  border: 2px solid #3a4558;
+  border: 2px solid var(--border-color);
   border-radius: 6px;
   font-size: 14px;
   font-family: inherit;
-  background-color: #1a1f2e;
-  color: #aabbcc;
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
   transition: all 0.3s ease;
 }
 
 .date-filter-input:focus {
   outline: none;
-  border-color: #FF8C42;
+  border-color: var(--accent-color);
   box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.15);
 }
 
 .date-filter-input::placeholder {
-  color: #667788;
+  color: var(--text-light);
 }
 
 /* Table Wrapper */
