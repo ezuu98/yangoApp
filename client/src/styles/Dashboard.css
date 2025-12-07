@@ -499,11 +499,11 @@
 
 .vehicles-table .currency {
   font-weight: 500;
-  color: #aabbcc;
+  color: var(--text-secondary);
 }
 
 .vehicles-table .currency.profit {
-  color: #FF8C42;
+  color: var(--accent-color);
   font-weight: 600;
 }
 
