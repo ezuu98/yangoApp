@@ -149,7 +149,6 @@
 }
 
 .status-card {
-  background: white;
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -162,6 +161,26 @@
 .status-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.card-active {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.12) 0%, rgba(76, 175, 80, 0.05) 100%);
+  border-left: 4px solid #4CAF50;
+}
+
+.card-stationed {
+  background: linear-gradient(135deg, rgba(158, 158, 158, 0.12) 0%, rgba(158, 158, 158, 0.05) 100%);
+  border-left: 4px solid #9E9E9E;
+}
+
+.card-maintenance {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.12) 0%, rgba(255, 193, 7, 0.05) 100%);
+  border-left: 4px solid #FFC107;
+}
+
+.card-emergency {
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.12) 0%, rgba(244, 67, 54, 0.05) 100%);
+  border-left: 4px solid #F44336;
 }
 
 .status-icon {
