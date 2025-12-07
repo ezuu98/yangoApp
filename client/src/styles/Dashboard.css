@@ -175,25 +175,23 @@
 }
 
 .dropdown-toggle {
-  background-color: rgba(255, 140, 66, 0.2);
+  background: none;
   color: white;
-  border: 1px solid rgba(255, 140, 66, 0.5);
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 18px;
+  border: none;
+  padding: 0;
+  font-size: 20px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: auto;
+  height: auto;
 }
 
 .dropdown-toggle:hover {
-  background-color: rgba(255, 140, 66, 0.3);
-  border-color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 .dropdown-menu {
