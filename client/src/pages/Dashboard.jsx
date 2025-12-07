@@ -10,6 +10,51 @@ function Dashboard() {
     const saved = localStorage.getItem('theme');
     return saved ? saved === 'dark' : true;
   });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [bookings, setBookings] = useState([
+    {
+      id: 1,
+      vehicle: 'KW-001',
+      driver: 'Ahmed Hassan',
+      bookingDate: '2024-01-10',
+      returnDate: '2024-01-15',
+      amount: 2500,
+      status: 'Completed'
+    },
+    {
+      id: 2,
+      vehicle: 'KW-002',
+      driver: 'Fatima Ali',
+      bookingDate: '2024-01-12',
+      returnDate: '2024-01-20',
+      amount: 3000,
+      status: 'Completed'
+    },
+    {
+      id: 3,
+      vehicle: 'KW-003',
+      driver: 'Mohammed Karim',
+      bookingDate: '2024-01-14',
+      returnDate: '2024-01-18',
+      amount: 2800,
+      status: 'Confirmed'
+    },
+    {
+      id: 4,
+      vehicle: 'KW-004',
+      driver: 'Amina Ibrahim',
+      bookingDate: '2024-01-16',
+      returnDate: '2024-01-22',
+      amount: 2300,
+      status: 'Pending'
+    }
+  ]);
+  const [newBooking, setNewBooking] = useState({
+    vehicle: '',
+    bookingDate: '',
+    returnDate: '',
+    amount: ''
+  });
   const dropdownRef = useRef(null);
   const datePickerRef = useRef(null);
   const today = new Date().toISOString().split('T')[0];
