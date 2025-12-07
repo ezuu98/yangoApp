@@ -240,6 +240,18 @@ function Dashboard() {
           </div>
           <div className="header-user">
             <span className="user-greeting">Welcome, {user.email || 'Guest'}</span>
+            <div className="theme-toggle-container">
+              <label className="theme-switch">
+                <input
+                  type="checkbox"
+                  checked={isDarkMode}
+                  onChange={handleThemeToggle}
+                  aria-label="Toggle dark mode"
+                />
+                <span className="theme-slider"></span>
+              </label>
+              <span className="theme-label">{isDarkMode ? '🌙' : '☀️'}</span>
+            </div>
             <div className="dropdown-container" ref={dropdownRef}>
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
