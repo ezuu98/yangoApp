@@ -388,14 +388,14 @@
 .bookings-empty {
   text-align: center;
   padding: 48px 24px;
-  background: linear-gradient(135deg, rgba(26, 58, 82, 0.03) 0%, rgba(255, 140, 66, 0.03) 100%);
+  background: linear-gradient(135deg, rgba(255, 140, 66, 0.08) 0%, rgba(255, 140, 66, 0.04) 100%);
   border-radius: 8px;
   margin-top: 24px;
 }
 
 .bookings-empty p {
   font-size: 16px;
-  color: #888;
+  color: #aabbcc;
   margin: 0;
   line-height: 1.6;
 }
