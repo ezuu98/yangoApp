@@ -5,6 +5,10 @@ import '../styles/Dashboard.css';
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('main');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved ? saved === 'dark' : true;
+  });
   const dropdownRef = useRef(null);
   const today = new Date().toISOString().split('T')[0];
   const [startDate, setStartDate] = useState(today);
@@ -25,6 +29,12 @@ function Dashboard() {
       };
     }
   }, [isDropdownOpen]);
+
+  useEffect(() => {
+    const theme = isDarkMode ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [isDarkMode]);
 
   const handleLogout = () => {
     localStorage.removeItem('user');
