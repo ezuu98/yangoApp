@@ -269,9 +269,16 @@
 /* Filter Container */
 .filter-container {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  align-items: flex-end;
+  gap: 20px;
   margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.date-range-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .filter-label {
