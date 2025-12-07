@@ -149,26 +149,13 @@
   line-height: 1.6;
 }
 
-/* Bookings Section */
-.bookings-section {
-  background: white;
-  border-radius: 12px;
-  padding: 32px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.bookings-section h3 {
-  font-size: 20px;
-  color: #1a3a52;
-  margin: 0 0 24px 0;
-  font-weight: 600;
-}
-
+/* Bookings Empty State */
 .bookings-empty {
   text-align: center;
   padding: 48px 24px;
   background: linear-gradient(135deg, rgba(26, 58, 82, 0.03) 0%, rgba(255, 140, 66, 0.03) 100%);
   border-radius: 8px;
+  margin-top: 24px;
 }
 
 .bookings-empty p {
