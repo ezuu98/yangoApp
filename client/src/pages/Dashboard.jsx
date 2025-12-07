@@ -71,6 +71,7 @@ function Dashboard() {
     fare: '',
     date: ''
   });
+  const dashboardRef = useRef(null);
   const dropdownRef = useRef(null);
   const datePickerRef = useRef(null);
   const today = new Date().toISOString().split('T')[0];
