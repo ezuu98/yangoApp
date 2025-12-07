@@ -26,7 +26,8 @@ function Dashboard() {
       maintenance: 100,
       rent: 500,
       profit: 250,
-      bonus: 0
+      bonus: 0,
+      status: 'Active'
     },
     {
       id: 2,
@@ -39,7 +40,8 @@ function Dashboard() {
       maintenance: 150,
       rent: 500,
       profit: 630,
-      bonus: 50
+      bonus: 50,
+      status: 'Active'
     },
     {
       id: 3,
@@ -52,7 +54,8 @@ function Dashboard() {
       maintenance: 200,
       rent: 500,
       profit: 420,
-      bonus: 25
+      bonus: 25,
+      status: 'Maintenance'
     },
     {
       id: 4,
@@ -65,7 +68,8 @@ function Dashboard() {
       maintenance: 80,
       rent: 500,
       profit: 120,
-      bonus: 0
+      bonus: 0,
+      status: 'Stationed'
     }
   ];
 
