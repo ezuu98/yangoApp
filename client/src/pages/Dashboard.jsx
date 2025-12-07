@@ -137,7 +137,6 @@ function Dashboard() {
                         <td>{vehicle.plateNo}</td>
                         <td>{vehicle.driver}</td>
                         <td>{vehicle.contact}</td>
-                        <td><span className={`status-badge status-${vehicle.status.toLowerCase()}`}>{vehicle.status}</span></td>
                         <td className="currency">{vehicle.earning.toLocaleString()}</td>
                         <td className="currency">{vehicle.fuelCost.toLocaleString()}</td>
                         <td className="currency">{vehicle.salary.toLocaleString()}</td>
@@ -145,6 +144,7 @@ function Dashboard() {
                         <td className="currency">{vehicle.rent.toLocaleString()}</td>
                         <td className="currency profit">{vehicle.profit.toLocaleString()}</td>
                         <td className="currency">{vehicle.bonus.toLocaleString()}</td>
+                        <td><span className={`status-badge status-${vehicle.status.toLowerCase()}`}>{vehicle.status}</span></td>
                       </tr>
                     ))}
                   </tbody>
