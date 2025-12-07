@@ -247,7 +247,7 @@
   border: none;
   font-size: 15px;
   font-weight: 500;
-  color: #8899aa;
+  color: var(--text-light);
   cursor: pointer;
   transition: all 0.3s ease;
   border-bottom: 3px solid transparent;
@@ -255,13 +255,13 @@
 }
 
 .tab-button:hover {
-  color: #aabbcc;
+  color: var(--text-secondary);
   background-color: rgba(255, 140, 66, 0.05);
 }
 
 .tab-button.active {
-  color: #FF8C42;
-  border-bottom-color: #FF8C42;
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
 }
 
 /* Tab Content */
