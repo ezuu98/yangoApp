@@ -695,9 +695,13 @@
     margin-bottom: 16px;
   }
 
-  .date-range-group {
-    flex: 1;
-    min-width: 200px;
+  .date-picker-trigger {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .date-picker-popup {
+    min-width: 260px;
   }
 
   .vehicles-table {
