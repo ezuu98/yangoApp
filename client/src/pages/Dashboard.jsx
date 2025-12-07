@@ -392,10 +392,113 @@ function Dashboard() {
       case 'bookings':
         return (
           <div className="tab-content">
-            <h2>Bookings</h2>
-            <div className="bookings-empty">
-              <p>You don't have any active bookings at the moment.</p>
-              <p>Start exploring our fleet and make your first reservation!</p>
+            <div className="bookings-header">
+              <h2>Bookings</h2>
+              <button className="add-booking-btn" onClick={() => setIsBookingModalOpen(true)}>
+                ➕ Add Booking
+              </button>
+            </div>
+
+            {isBookingModalOpen && (
+              <div className="modal-overlay" onClick={() => setIsBookingModalOpen(false)}>
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                  <div className="modal-header">
+                    <h3>Add New Booking</h3>
+                    <button className="modal-close" onClick={() => setIsBookingModalOpen(false)}>✕</button>
+                  </div>
+                  <div className="modal-body">
+                    <div className="form-group">
+                      <label>Vehicle</label>
+                      <select
+                        value={newBooking.vehicle}
+                        onChange={(e) => setNewBooking({ ...newBooking, vehicle: e.target.value })}
+                      >
+                        <option value="">Select a vehicle</option>
+                        <option value="KW-001">KW-001 - Ahmed Hassan</option>
+                        <option value="KW-002">KW-002 - Fatima Ali</option>
+                        <option value="KW-003">KW-003 - Mohammed Karim</option>
+                        <option value="KW-004">KW-004 - Amina Ibrahim</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label>Booking Date</label>
+                      <input
+                        type="date"
+                        value={newBooking.bookingDate}
+                        onChange={(e) => setNewBooking({ ...newBooking, bookingDate: e.target.value })}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Return Date</label>
+                      <input
+                        type="date"
+                        value={newBooking.returnDate}
+                        onChange={(e) => setNewBooking({ ...newBooking, returnDate: e.target.value })}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Amount</label>
+                      <input
+                        type="number"
+                        placeholder="Enter booking amount"
+                        value={newBooking.amount}
+                        onChange={(e) => setNewBooking({ ...newBooking, amount: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                  <div className="modal-footer">
+                    <button className="btn-cancel" onClick={() => setIsBookingModalOpen(false)}>Cancel</button>
+                    <button className="btn-submit" onClick={handleAddBooking}>Add Booking</button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div className="bookings-section">
+              <h3>Booking History</h3>
+              <div className="table-wrapper">
+                <table className="bookings-table">
+                  <thead>
+                    <tr>
+                      <th>Vehicle</th>
+                      <th>Driver</th>
+                      <th>Booking Date</th>
+                      <th>Return Date</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {bookings.length > 0 ? (
+                      bookings.map((booking) => (
+                        <tr key={booking.id}>
+                          <td>{booking.vehicle}</td>
+                          <td>{booking.driver}</td>
+                          <td>{booking.bookingDate}</td>
+                          <td>{booking.returnDate}</td>
+                          <td className="currency">{booking.amount.toLocaleString()}</td>
+                          <td><span className={`booking-status status-${booking.status.toLowerCase()}`}>{booking.status}</span></td>
+                          <td>
+                            {booking.status !== 'Cancelled' && booking.status !== 'Completed' && (
+                              <button
+                                className="action-btn-cancel"
+                                onClick={() => handleCancelBooking(booking.id)}
+                              >
+                                Cancel
+                              </button>
+                            )}
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="7" className="no-data">No bookings found</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         );
