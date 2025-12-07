@@ -114,7 +114,9 @@ function Dashboard() {
   useEffect(() => {
     const theme = isDarkMode ? 'dark' : 'light';
     localStorage.setItem('theme', theme);
-    document.documentElement.setAttribute('data-theme', theme);
+    if (dashboardRef.current) {
+      dashboardRef.current.setAttribute('data-theme', theme);
+    }
   }, [isDarkMode]);
 
   const handleLogout = () => {
