@@ -113,6 +113,29 @@ function Dashboard() {
     setIsDarkMode(!isDarkMode);
   };
 
+  const handleAddBooking = () => {
+    if (newBooking.vehicle && newBooking.bookingDate && newBooking.returnDate && newBooking.amount) {
+      const booking = {
+        id: bookings.length + 1,
+        vehicle: newBooking.vehicle,
+        driver: 'New Customer',
+        bookingDate: newBooking.bookingDate,
+        returnDate: newBooking.returnDate,
+        amount: parseFloat(newBooking.amount),
+        status: 'Pending'
+      };
+      setBookings([booking, ...bookings]);
+      setNewBooking({ vehicle: '', bookingDate: '', returnDate: '', amount: '' });
+      setIsBookingModalOpen(false);
+    }
+  };
+
+  const handleCancelBooking = (bookingId) => {
+    setBookings(bookings.map(booking =>
+      booking.id === bookingId ? { ...booking, status: 'Cancelled' } : booking
+    ));
+  };
+
   const formatDateToString = (date) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
