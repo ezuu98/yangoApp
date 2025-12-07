@@ -14,46 +14,62 @@ function Dashboard() {
   const [bookings, setBookings] = useState([
     {
       id: 1,
-      vehicle: 'KW-001',
+      customer: 'Ali Ahmed',
+      contact: '0712345678',
+      cnic: '12345-1234567-1',
+      reference: 'REF-001',
       driver: 'Ahmed Hassan',
-      bookingDate: '2024-01-10',
-      returnDate: '2024-01-15',
-      amount: 2500,
+      vehicle: 'KW-001',
+      fare: 2500,
+      date: '2024-01-10',
       status: 'Completed'
     },
     {
       id: 2,
-      vehicle: 'KW-002',
+      customer: 'Fatima Khan',
+      contact: '0787654321',
+      cnic: '12346-1234568-2',
+      reference: 'REF-002',
       driver: 'Fatima Ali',
-      bookingDate: '2024-01-12',
-      returnDate: '2024-01-20',
-      amount: 3000,
+      vehicle: 'KW-002',
+      fare: 3000,
+      date: '2024-01-12',
       status: 'Completed'
     },
     {
       id: 3,
-      vehicle: 'KW-003',
+      customer: 'Mohammed Ali',
+      contact: '0722222222',
+      cnic: '12347-1234569-3',
+      reference: 'REF-003',
       driver: 'Mohammed Karim',
-      bookingDate: '2024-01-14',
-      returnDate: '2024-01-18',
-      amount: 2800,
+      vehicle: 'KW-003',
+      fare: 2800,
+      date: '2024-01-14',
       status: 'Confirmed'
     },
     {
       id: 4,
-      vehicle: 'KW-004',
+      customer: 'Amina Hassan',
+      contact: '0733333333',
+      cnic: '12348-1234570-4',
+      reference: 'REF-004',
       driver: 'Amina Ibrahim',
-      bookingDate: '2024-01-16',
-      returnDate: '2024-01-22',
-      amount: 2300,
+      vehicle: 'KW-004',
+      fare: 2300,
+      date: '2024-01-16',
       status: 'Pending'
     }
   ]);
   const [newBooking, setNewBooking] = useState({
+    customer: '',
+    contact: '',
+    cnic: '',
+    reference: '',
+    driver: '',
     vehicle: '',
-    bookingDate: '',
-    returnDate: '',
-    amount: ''
+    fare: '',
+    date: ''
   });
   const dropdownRef = useRef(null);
   const datePickerRef = useRef(null);
@@ -114,18 +130,21 @@ function Dashboard() {
   };
 
   const handleAddBooking = () => {
-    if (newBooking.vehicle && newBooking.bookingDate && newBooking.returnDate && newBooking.amount) {
+    if (newBooking.customer && newBooking.contact && newBooking.cnic && newBooking.reference && newBooking.driver && newBooking.vehicle && newBooking.fare && newBooking.date) {
       const booking = {
         id: bookings.length + 1,
+        customer: newBooking.customer,
+        contact: newBooking.contact,
+        cnic: newBooking.cnic,
+        reference: newBooking.reference,
+        driver: newBooking.driver,
         vehicle: newBooking.vehicle,
-        driver: 'New Customer',
-        bookingDate: newBooking.bookingDate,
-        returnDate: newBooking.returnDate,
-        amount: parseFloat(newBooking.amount),
+        fare: parseFloat(newBooking.fare),
+        date: newBooking.date,
         status: 'Pending'
       };
       setBookings([booking, ...bookings]);
-      setNewBooking({ vehicle: '', bookingDate: '', returnDate: '', amount: '' });
+      setNewBooking({ customer: '', contact: '', cnic: '', reference: '', driver: '', vehicle: '', fare: '', date: '' });
       setIsBookingModalOpen(false);
     }
   };
