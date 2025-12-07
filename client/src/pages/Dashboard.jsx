@@ -231,33 +231,47 @@ function Dashboard() {
                     📅 {startDate} to {endDate}
                   </button>
                   {isDatePickerOpen && (
-                    <div className="date-picker-popup">
-                      <div className="date-picker-field">
-                        <label htmlFor="startDate" className="date-picker-label">From:</label>
-                        <input
-                          id="startDate"
-                          type="date"
-                          className="date-picker-input"
-                          value={startDate}
-                          onChange={(e) => setStartDate(e.target.value)}
-                        />
+                    <div className="calendar-popup">
+                      <div className="calendar-header">
+                        <button
+                          className="calendar-nav"
+                          onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}
+                        >
+                          ← Prev
+                        </button>
+                        <span className="calendar-month">{formatMonth(currentMonth)}</span>
+                        <button
+                          className="calendar-nav"
+                          onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}
+                        >
+                          Next →
+                        </button>
                       </div>
-                      <div className="date-picker-field">
-                        <label htmlFor="endDate" className="date-picker-label">To:</label>
-                        <input
-                          id="endDate"
-                          type="date"
-                          className="date-picker-input"
-                          value={endDate}
-                          onChange={(e) => setEndDate(e.target.value)}
-                        />
+                      <div className="calendar-weekdays">
+                        <div className="weekday">Sun</div>
+                        <div className="weekday">Mon</div>
+                        <div className="weekday">Tue</div>
+                        <div className="weekday">Wed</div>
+                        <div className="weekday">Thu</div>
+                        <div className="weekday">Fri</div>
+                        <div className="weekday">Sat</div>
                       </div>
-                      <button
-                        className="date-picker-apply"
-                        onClick={() => setIsDatePickerOpen(false)}
-                      >
-                        Apply
-                      </button>
+                      <div className="calendar-days">
+                        {generateCalendarDays().map((date, index) => (
+                          <button
+                            key={index}
+                            className={`calendar-day ${date ? '' : 'empty'} ${date && isDateSelected(date) ? 'selected' : ''} ${date && isDateInRange(date) ? 'in-range' : ''}`}
+                            onClick={() => date && handleDateSelect(date)}
+                            disabled={!date}
+                          >
+                            {date ? date.getDate() : ''}
+                          </button>
+                        ))}
+                      </div>
+                      <div className="calendar-info">
+                        {tempStartDate && <p>Start: {tempStartDate} - Select end date</p>}
+                        {!tempStartDate && startDate && endDate && <p>Selected: {startDate} to {endDate}</p>}
+                      </div>
                     </div>
                   )}
                 </div>
