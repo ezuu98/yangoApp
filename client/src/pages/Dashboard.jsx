@@ -520,11 +520,14 @@ function Dashboard() {
                 <table className="bookings-table">
                   <thead>
                     <tr>
-                      <th>Vehicle</th>
+                      <th>Customer</th>
+                      <th>Contact</th>
+                      <th>CNIC</th>
+                      <th>Reference</th>
                       <th>Driver</th>
-                      <th>Booking Date</th>
-                      <th>Return Date</th>
-                      <th>Amount</th>
+                      <th>Vehicle</th>
+                      <th>Fare</th>
+                      <th>Date</th>
                       <th>Status</th>
                       <th>Action</th>
                     </tr>
