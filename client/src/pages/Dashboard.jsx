@@ -559,7 +559,7 @@ function Dashboard() {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="7" className="no-data">No bookings found</td>
+                        <td colSpan="10" className="no-data">No bookings found</td>
                       </tr>
                     )}
                   </tbody>
