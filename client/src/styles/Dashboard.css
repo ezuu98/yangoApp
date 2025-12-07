@@ -88,8 +88,8 @@
 
 /* Tab Navigation */
 .tab-navigation {
-  background: white;
-  border-bottom: 2px solid #e0e0e0;
+  background: #252d3d;
+  border-bottom: 2px solid #3a4558;
   position: sticky;
   top: 70px;
   z-index: 50;
