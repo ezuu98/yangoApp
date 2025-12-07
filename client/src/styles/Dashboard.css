@@ -1,6 +1,38 @@
+:root {
+  --bg-primary: #1a1f2e;
+  --bg-secondary: #252d3d;
+  --bg-tertiary: #1a1f2e;
+  --text-primary: #d4d4d4;
+  --text-secondary: #aabbcc;
+  --text-light: #8899aa;
+  --border-color: #3a4558;
+  --accent-color: #FF8C42;
+  --header-bg: linear-gradient(135deg, #1a3a52 0%, #0f2340 100%);
+  --status-active: #2e7d32;
+  --status-stationed: #1565c0;
+  --status-maintenance: #e65100;
+  --status-emergency: #c62828;
+}
+
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #f9f9f9;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-light: #999999;
+  --border-color: #e0e0e0;
+  --accent-color: #FF8C42;
+  --header-bg: linear-gradient(135deg, #FF8C42 0%, #E57C2E 100%);
+  --status-active: #4CAF50;
+  --status-stationed: #2196F3;
+  --status-maintenance: #FFC107;
+  --status-emergency: #F44336;
+}
+
 .dashboard-container {
   min-height: 100vh;
-  background-color: #1a1f2e;
+  background-color: var(--bg-primary);
   display: flex;
   flex-direction: column;
 }
