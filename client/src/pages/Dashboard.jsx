@@ -121,7 +121,6 @@ function Dashboard() {
                       <th>Plate No</th>
                       <th>Driver</th>
                       <th>Contact</th>
-                      <th>Status</th>
                       <th>Earning</th>
                       <th>Fuel Cost</th>
                       <th>Salary</th>
@@ -129,6 +128,7 @@ function Dashboard() {
                       <th>Rent</th>
                       <th>Profit</th>
                       <th>Bonus Recovery</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
