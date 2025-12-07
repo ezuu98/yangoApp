@@ -119,6 +119,13 @@ function Dashboard() {
     }
   }, [isDarkMode]);
 
+  useEffect(() => {
+    if (dashboardRef.current) {
+      const theme = isDarkMode ? 'dark' : 'light';
+      dashboardRef.current.setAttribute('data-theme', theme);
+    }
+  }, []);
+
   const handleLogout = () => {
     localStorage.removeItem('user');
     navigate('/');
