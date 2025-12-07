@@ -584,7 +584,7 @@ function Dashboard() {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container" ref={dashboardRef}>
       {/* Header */}
       <header className="dashboard-header">
         <div className="header-content">
