@@ -426,16 +426,62 @@
     padding: 16px 12px;
   }
 
-  .tab-content {
-    padding: 20px 12px;
+  .tab-content h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
   }
 
-  .tab-content h2 {
+  .status-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .status-card {
+    padding: 14px;
+  }
+
+  .status-icon {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .status-label {
+    font-size: 12px;
+  }
+
+  .status-value {
     font-size: 20px;
   }
 
-  .tab-content p {
-    font-size: 14px;
+  .vehicles-section {
+    padding: 12px;
+  }
+
+  .filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .date-filter-input {
+    width: 100%;
+  }
+
+  .vehicles-table {
+    font-size: 12px;
+  }
+
+  .vehicles-table th,
+  .vehicles-table td {
+    padding: 8px 10px;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .bookings-empty {
