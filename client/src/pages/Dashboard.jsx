@@ -5,11 +5,13 @@ import '../styles/Dashboard.css';
 function Dashboard() {
   const [activeTab, setActiveTab] = useState('main');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const saved = localStorage.getItem('theme');
     return saved ? saved === 'dark' : true;
   });
   const dropdownRef = useRef(null);
+  const datePickerRef = useRef(null);
   const today = new Date().toISOString().split('T')[0];
   const [startDate, setStartDate] = useState(today);
   const [endDate, setEndDate] = useState(today);
