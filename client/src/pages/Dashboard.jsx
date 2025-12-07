@@ -126,16 +126,13 @@ function Dashboard() {
 
   const isDateInRange = (date) => {
     if (!date) return false;
-    const dateStr = date.toISOString().split('T')[0];
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    const current = new Date(dateStr);
-    return current >= start && current <= end;
+    const dateStr = formatDateToString(date);
+    return dateStr >= startDate && dateStr <= endDate;
   };
 
   const isDateSelected = (date) => {
     if (!date) return false;
-    const dateStr = date.toISOString().split('T')[0];
+    const dateStr = formatDateToString(date);
     return dateStr === startDate || dateStr === endDate || dateStr === tempStartDate;
   };
 
