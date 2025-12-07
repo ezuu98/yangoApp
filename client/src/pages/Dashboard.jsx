@@ -226,7 +226,7 @@ function Dashboard() {
           </div>
           <div className="header-user">
             <span className="user-greeting">Welcome, {user.email || 'Guest'}</span>
-            <div className="dropdown-container">
+            <div className="dropdown-container" ref={dropdownRef}>
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="dropdown-toggle"
