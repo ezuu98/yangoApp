@@ -105,14 +105,26 @@ function Dashboard() {
             {/* Date Filter and Table */}
             <div className="vehicles-section">
               <div className="filter-container">
-                <label htmlFor="dateFilter" className="filter-label">Filter by Date:</label>
-                <input
-                  id="dateFilter"
-                  type="date"
-                  className="date-filter-input"
-                  value={dateFilter}
-                  onChange={(e) => setDateFilter(e.target.value)}
-                />
+                <div className="date-range-group">
+                  <label htmlFor="startDate" className="filter-label">From:</label>
+                  <input
+                    id="startDate"
+                    type="date"
+                    className="date-filter-input"
+                    value={startDate}
+                    onChange={(e) => setStartDate(e.target.value)}
+                  />
+                </div>
+                <div className="date-range-group">
+                  <label htmlFor="endDate" className="filter-label">To:</label>
+                  <input
+                    id="endDate"
+                    type="date"
+                    className="date-filter-input"
+                    value={endDate}
+                    onChange={(e) => setEndDate(e.target.value)}
+                  />
+                </div>
               </div>
 
               {/* Vehicles Table */}
