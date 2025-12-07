@@ -246,7 +246,7 @@ function Dashboard() {
                 className="dropdown-toggle"
                 aria-label="User menu"
               >
-                ▼
+                ˅
               </button>
               {isDropdownOpen && (
                 <div className="dropdown-menu">
