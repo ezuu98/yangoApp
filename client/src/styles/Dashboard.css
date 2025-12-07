@@ -301,23 +301,39 @@
 }
 
 .card-active {
-  background: linear-gradient(135deg, #1f3f2a 0%, #192b1f 100%);
-  border-left: 4px solid #4CAF50;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.15) 0%, rgba(76, 175, 80, 0.05) 100%);
+  border-left: 4px solid var(--status-active);
+}
+
+[data-theme="light"] .card-active {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.02) 100%);
 }
 
 .card-stationed {
-  background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
-  border-left: 4px solid #9E9E9E;
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.15) 0%, rgba(33, 150, 243, 0.05) 100%);
+  border-left: 4px solid var(--status-stationed);
+}
+
+[data-theme="light"] .card-stationed {
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.1) 0%, rgba(33, 150, 243, 0.02) 100%);
 }
 
 .card-maintenance {
-  background: linear-gradient(135deg, #3f3220 0%, #2a2318 100%);
-  border-left: 4px solid #FFC107;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0.05) 100%);
+  border-left: 4px solid var(--status-maintenance);
+}
+
+[data-theme="light"] .card-maintenance {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 193, 7, 0.02) 100%);
 }
 
 .card-emergency {
-  background: linear-gradient(135deg, #3f1f1f 0%, #2a1515 100%);
-  border-left: 4px solid #F44336;
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.15) 0%, rgba(244, 67, 54, 0.05) 100%);
+  border-left: 4px solid var(--status-emergency);
+}
+
+[data-theme="light"] .card-emergency {
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(244, 67, 54, 0.02) 100%);
 }
 
 .status-icon {
