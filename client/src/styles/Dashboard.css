@@ -665,7 +665,7 @@
 .add-booking-btn {
   padding: 10px 20px;
   background-color: var(--accent-color);
-  color: white;
+  color: #1a1f2e;
   border: none;
   border-radius: 6px;
   font-size: 14px;
@@ -679,8 +679,17 @@
 
 .add-booking-btn:hover {
   background-color: #E57C2E;
+  color: #1a1f2e;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .add-booking-btn {
+  color: #1a1f2e;
+}
+
+[data-theme="light"] .add-booking-btn:hover {
+  color: #1a1f2e;
 }
 
 /* Modal Styles */
