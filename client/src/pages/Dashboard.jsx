@@ -210,7 +210,25 @@ function Dashboard() {
           </div>
           <div className="header-user">
             <span className="user-greeting">Welcome, {user.email || 'Guest'}</span>
-            <button onClick={handleLogout} className="logout-button">Sign Out</button>
+            <div className="dropdown-container">
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="dropdown-toggle"
+                aria-label="User menu"
+              >
+                ⋮
+              </button>
+              {isDropdownOpen && (
+                <div className="dropdown-menu">
+                  <button className="dropdown-item" onClick={handleSettings}>
+                    ⚙️ Settings
+                  </button>
+                  <button className="dropdown-item" onClick={handleLogout}>
+                    🚪 Sign Out
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </header>
