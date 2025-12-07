@@ -15,6 +15,8 @@ function Dashboard() {
   const today = new Date().toISOString().split('T')[0];
   const [startDate, setStartDate] = useState(today);
   const [endDate, setEndDate] = useState(today);
+  const [tempStartDate, setTempStartDate] = useState(null);
+  const [currentMonth, setCurrentMonth] = useState(new Date());
   const navigate = useNavigate();
 
   useEffect(() => {
