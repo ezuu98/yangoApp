@@ -238,9 +238,24 @@
 
 .status-value {
   font-size: 28px;
-  color: #1a3a52;
   margin: 0;
   font-weight: 700;
+}
+
+.card-active .status-value {
+  color: #2e7d32;
+}
+
+.card-stationed .status-value {
+  color: #424242;
+}
+
+.card-maintenance .status-value {
+  color: #f57f17;
+}
+
+.card-emergency .status-value {
+  color: #c62828;
 }
 
 /* Vehicles Section */
