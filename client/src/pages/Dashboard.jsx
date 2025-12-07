@@ -121,6 +121,7 @@ function Dashboard() {
                       <th>Plate No</th>
                       <th>Driver</th>
                       <th>Contact</th>
+                      <th>Status</th>
                       <th>Earning</th>
                       <th>Fuel Cost</th>
                       <th>Salary</th>
@@ -136,13 +137,14 @@ function Dashboard() {
                         <td>{vehicle.plateNo}</td>
                         <td>{vehicle.driver}</td>
                         <td>{vehicle.contact}</td>
-                        <td className="currency">KES {vehicle.earning.toLocaleString()}</td>
-                        <td className="currency">KES {vehicle.fuelCost.toLocaleString()}</td>
-                        <td className="currency">KES {vehicle.salary.toLocaleString()}</td>
-                        <td className="currency">KES {vehicle.maintenance.toLocaleString()}</td>
-                        <td className="currency">KES {vehicle.rent.toLocaleString()}</td>
-                        <td className="currency profit">KES {vehicle.profit.toLocaleString()}</td>
-                        <td className="currency">KES {vehicle.bonus.toLocaleString()}</td>
+                        <td><span className={`status-badge status-${vehicle.status.toLowerCase()}`}>{vehicle.status}</span></td>
+                        <td className="currency">{vehicle.earning.toLocaleString()}</td>
+                        <td className="currency">{vehicle.fuelCost.toLocaleString()}</td>
+                        <td className="currency">{vehicle.salary.toLocaleString()}</td>
+                        <td className="currency">{vehicle.maintenance.toLocaleString()}</td>
+                        <td className="currency">{vehicle.rent.toLocaleString()}</td>
+                        <td className="currency profit">{vehicle.profit.toLocaleString()}</td>
+                        <td className="currency">{vehicle.bonus.toLocaleString()}</td>
                       </tr>
                     ))}
                   </tbody>
