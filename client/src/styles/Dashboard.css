@@ -546,9 +546,13 @@
   margin-top: 24px;
 }
 
+[data-theme="light"] .bookings-empty {
+  background: linear-gradient(135deg, rgba(255, 140, 66, 0.05) 0%, rgba(255, 140, 66, 0.02) 100%);
+}
+
 .bookings-empty p {
   font-size: 16px;
-  color: #aabbcc;
+  color: var(--text-secondary);
   margin: 0;
   line-height: 1.6;
 }
