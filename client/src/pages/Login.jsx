@@ -1,13 +1,24 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Store user info in localStorage
+    localStorage.setItem('user', JSON.stringify({
+      email,
+      rememberMe
+    }));
+
+    // Navigate to dashboard
+    navigate('/dashboard');
   };
 
   return (
