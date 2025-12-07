@@ -260,10 +260,10 @@
 
 /* Vehicles Section */
 .vehicles-section {
-  background: white;
+  background: #252d3d;
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* Filter Container */
