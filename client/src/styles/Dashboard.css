@@ -322,31 +322,31 @@
 }
 
 .vehicles-table thead {
-  background-color: #f5f5f5;
-  border-bottom: 2px solid #e0e0e0;
+  background-color: #1a1f2e;
+  border-bottom: 2px solid #3a4558;
 }
 
 .vehicles-table th {
   padding: 12px 16px;
   text-align: left;
   font-weight: 600;
-  color: #1a3a52;
+  color: #aabbcc;
   white-space: nowrap;
 }
 
 .vehicles-table td {
   padding: 12px 16px;
-  border-bottom: 1px solid #e0e0e0;
-  color: #333;
+  border-bottom: 1px solid #3a4558;
+  color: #d4d4d4;
 }
 
 .vehicles-table tbody tr:hover {
-  background-color: rgba(255, 140, 66, 0.05);
+  background-color: rgba(255, 140, 66, 0.08);
 }
 
 .vehicles-table .currency {
   font-weight: 500;
-  color: #1a3a52;
+  color: #aabbcc;
 }
 
 .vehicles-table .currency.profit {
